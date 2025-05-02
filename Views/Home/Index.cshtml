@@ -1,0 +1,31 @@
+﻿@model ProductViewModel
+
+<h2>Productos Vendidos</h2>
+
+<form asp-action="Filtrar" method="post">
+    <select asp-for="Codigocategoria" asp-items="Model.Categorias"></select>
+    <button type="submit">Filtrar</button>
+</form>
+
+@if (Model.Productos != null && Model.Productos.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Producto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in Model.Productos)
+            {
+                <tr>
+                    <td>@producto.Nombreproducto</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay productos disponibles.</p>
+}
